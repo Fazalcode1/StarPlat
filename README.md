@@ -124,11 +124,11 @@ nvcc -O3 -std=c++14 ../graphcode/generated_cuda/sssp_dslV2.cu -I .. -o ssspCuda.
 ./ssspCuda.out ../dataset/inputfile.txt
 
 # Step 4.2 Compile and run OMP algorithm
-g++ -O3 -fopenmp -std=c++14 ../graphcode/generated_omp/sssp_dslV2.cu -I .. -o ssspOmp.out
+g++ -O3 -fopenmp -std=c++14 ../graphcode/generated_omp/sssp_dslV2.cc -I .. -o ssspOmp.out
 ./ssspOmp.out ../dataset/inputfile.txt
 
 # Step 4.3 Compile and run MPI algorithm
-mpcxx -fopenmp -std=c++14 ../graphcode/generated_mpi/sssp_dslV2.cu -I .. -I boost_1_74_0/ -o ssspMpi.out
+mpcxx -fopenmp -std=c++14 ../graphcode/generated_mpi/sssp_dslV2.cc -I .. -I boost_1_74_0/ -o ssspMpi.out
 ./ssspMpi.out ../dataset/inputfile.txt
 
 # Step 4.4 Compile and run ACC algorithm
