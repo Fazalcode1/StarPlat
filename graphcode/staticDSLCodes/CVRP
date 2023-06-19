@@ -1,3 +1,25 @@
 function prims_mst(Graph g){
-
+	Graph T;
+	propEdge <int> weight;
+	T.attachEdgeProperty(weight=0);
+	 set<pair<int,pair<int,int>>> s;
+        s.insert({0,{0,-1}});
+        int v[g.numNodes()];
+        memset(v,-1,sizeof(v));
+        int z=0;
+        while(!s.empty()){
+            auto it=s.begin();
+            s.erase(it);
+            auto k = *it;
+            auto y = k.second;
+            if(v[y.first]==1)continue;
+                v[y.first]=1;
+                if(y.second!=-1)T.add_edge([y.first,y.second]);
+                edge e = T.get_edge(y.first,y.second);
+                e.weight = k.first;
+                for(auto x:adj[y.first]){
+                    s.insert({x[1],{x[0],y.first}});
+                }
+        }
+        return T;
 }
