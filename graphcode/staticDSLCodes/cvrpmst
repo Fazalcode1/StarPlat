@@ -1,0 +1,35 @@
+function cvrp(Graph g,node src){
+	propNode<bool> visited;
+	propEdge<bool> min;
+	
+	g.attachNodeProperty(sd = -1,visited = False);
+	g.attachEdgeProperty(min==False);
+	src.visited = True
+	bool notvisited = False;
+	
+	fixedPoint until (notvisited : !visited){
+		int k = 100000000;
+		node z;
+		for(x in g.nodes().filter(visited == True)){
+			for(y in g.neighbours(x).filter(visited == False)){
+				edge e = g.get_edge(x,y);
+				if(e.weight<k){
+					k = e.weight;
+					z = y;
+				}
+			}
+		}
+		edge e = g.get_edge(x,z);
+		e.min = False;
+		z.visited = True;
+	}
+	
+	Graph mst;
+	forall(x in g.nodes()){
+		mst.add_node(x);
+	}
+	forall(x in g.edges().filter(min==True)){
+		mst.add_edge(x);
+	}
+	return mst;
+}
