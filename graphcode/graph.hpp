@@ -109,7 +109,7 @@ class graph
 
   }
 
-  edge getEdge(int s, int d)
+  edge* getEdge(int s, int d)
     {
 
       int startEdge=indexofNodes[s];
